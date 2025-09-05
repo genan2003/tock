@@ -3,12 +3,9 @@
 // Copyright Tock Contributors 2025.
 
 use kernel::utilities::registers::interfaces::ReadWriteable;
-use kernel::utilities::registers::{
-    register_bitfields, register_structs, ReadWrite, WriteOnly,
-};
+use kernel::utilities::registers::{register_bitfields, register_structs, ReadWrite, WriteOnly};
 use kernel::utilities::StaticRef;
 
-#[allow(private_interfaces)]
 register_structs! {
     /// Input multiplexing (INPUT MUX)
     InputmuxRegisters {

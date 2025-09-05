@@ -4,9 +4,7 @@
 
 use crate::gpio::LPCPin;
 use kernel::utilities::registers::interfaces::Writeable;
-use kernel::utilities::registers::{
-    register_bitfields, register_structs, ReadWrite
-};
+use kernel::utilities::registers::{register_bitfields, register_structs, ReadWrite};
 use kernel::utilities::StaticRef;
 
 register_structs! {

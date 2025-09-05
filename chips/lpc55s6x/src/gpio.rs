@@ -277,7 +277,7 @@ impl<'a> GpioPin<'a> {
             registers: GPIO_BASE,
             port: pin_num / 32,
             pin: pin_num % 32,
-            pint_channel: OptionalCell::empty(),
+            // pint_channel: OptionalCell::empty(),
             client: OptionalCell::empty(),
             inputmux: OptionalCell::empty(),
             iocon: OptionalCell::empty(),

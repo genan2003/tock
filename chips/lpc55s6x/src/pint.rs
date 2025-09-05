@@ -2,15 +2,11 @@
 // SPDX-License-Identifier: Apache-2.0 OR MIT
 // Copyright Tock Contributors 2025.
 
-use crate::gpio::LPCPin;
 use kernel::utilities::cells::OptionalCell;
 use kernel::utilities::registers::interfaces::{ReadWriteable, Readable, Writeable};
-use kernel::utilities::registers::{
-    register_bitfields, register_structs, ReadWrite, WriteOnly
-};
+use kernel::utilities::registers::{register_bitfields, register_structs, ReadWrite, WriteOnly};
 use kernel::utilities::StaticRef;
 
-#[allow(private_interfaces)]
 register_structs! {
     PintRegisters {
         /// Pin Interrupt Mode register
