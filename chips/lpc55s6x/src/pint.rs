@@ -5,7 +5,6 @@ use crate::inputmux::Inputmux;
 use core::cell::Cell;
 use core::ptr::write_volatile;
 use cortex_m::delay;
-// use cortex_m_semihosting::hprintln;
 use kernel::hil::gpio::Input;
 use kernel::hil::gpio::Output;
 use kernel::utilities::cells::OptionalCell;
@@ -556,11 +555,8 @@ impl<'a> Pint<'a> {
     // }
 
     pub fn handle_interrupt(&self) {
-        // hprintln!("Int recv");
         let status = self.registers.ist.get();
 
-        // hprintln!("Status: {}", status);
-        // hprintln!("IST before {}", self.registers.ist.get());
 
         self.registers.rise.write(RISE::RDET.val(status));
         self.registers.fall.write(FALL::FDET.val(status));

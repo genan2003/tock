@@ -1,5 +1,4 @@
-use cortex_m_semihosting::hprintln;
-use cortexm33::support::atomic;
+use cortexm33::support::with_interrupts_disabled;
 use kernel::hil;
 use kernel::hil::time::{Alarm, Ticks, Ticks32, Time};
 use kernel::utilities::cells::{OptionalCell, VolatileCell};
@@ -391,7 +390,7 @@ impl<'a> LPCTimer<'a> {
 
     fn enable_timer_interrupt(&self) {
         unsafe {
-            atomic(|| {
+           with_interrupts_disabled(|| {
                 let n = cortexm33::nvic::Nvic::new(CTIMER0);
                 n.enable();
             })
@@ -465,7 +464,7 @@ impl<'a> Alarm<'a> for LPCTimer<'a> {
         self.armed.set(false);
 
         unsafe {
-            atomic(|| {
+           with_interrupts_disabled(|| {
                 cortexm33::nvic::Nvic::new(CTIMER0).clear_pending();
             });
         }

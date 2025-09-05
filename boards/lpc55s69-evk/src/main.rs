@@ -10,8 +10,6 @@ use core::panic;
 use core::ptr::write_volatile;
 use cortex_m::asm;
 use cortex_m::peripheral::NVIC;
-use cortex_m_rt::pre_init;
-use cortex_m_semihosting::hprintln;
 use cortexm33;
 use kernel::component::Component;
 use kernel::hil::led::{LedHigh, LedLow};

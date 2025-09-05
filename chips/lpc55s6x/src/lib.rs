@@ -13,7 +13,6 @@ pub mod iocon;
 pub mod pint;
 // pub mod rtc;
 // pub mod adc0;
-pub mod i2c0;
 pub mod syscon;
 
 extern "C" {

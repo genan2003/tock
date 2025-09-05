@@ -1,6 +1,5 @@
 use crate::syscon::CTIMERCLKSEL0::SEL::CLEAR;
 use crate::syscon::{self, SysconRegisters, *};
-use cortex_m_semihosting::hprintln;
 use kernel::utilities::{
     registers::interfaces::{ReadWriteable, Writeable},
     StaticRef,
@@ -53,7 +52,6 @@ impl Clock {
     }
 
     pub fn start_gpio_clocks(&self) {
-        // hprintln!("Starting GPIO clocks");
         self.syscon.ahbclkctrl0.modify(
             syscon::AHBCLKCTRL0::SRAM_CTRL1::SET
                 + syscon::AHBCLKCTRL0::SRAM_CTRL2::SET

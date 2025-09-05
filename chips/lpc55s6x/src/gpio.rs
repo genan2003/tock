@@ -1,13 +1,10 @@
-// use cortex_m_semihosting::hprintln;
+
 use kernel::hil::gpio;
 use kernel::utilities::cells::OptionalCell;
 use kernel::utilities::registers::interfaces::{Readable, Writeable};
 use kernel::utilities::registers::{register_bitfields, register_structs, ReadWrite, WriteOnly};
 use kernel::utilities::StaticRef;
-// FINAL CORRECTED SYNTAX:
-// The macro expects a tuple `(offset => field: type)` for every entry.
-// For reserved space, we define a field of type `[u8; size]` or `[u32; size]`.
-// The macro calculates padding based on the offset of the *next* defined register.
+
 register_structs! {
     pub GpioRegisters {
         (0x0000 => _reserved0: [u8; 0x2000]),
@@ -372,7 +369,6 @@ impl gpio::Configure for GpioPin<'_> {
     }
 
     fn make_input(&self) -> gpio::Configuration {
-        // hprintln!("Making input for pin {}", self.pin_mask());
         match self.port {
             0 => self
                 .registers

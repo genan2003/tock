@@ -1,9 +1,6 @@
 use core::fmt::Write;
 use core::panic;
-use cortex_m_semihosting::hprint;
-use cortex_m_semihosting::hprintln;
-// use cortex_m_semihosting::hprintln;
-// use cortex_m_semihosting::hprintln;
+
 use cortexm33::{CortexM33, CortexMVariant};
 use kernel::platform::chip::Chip;
 use kernel::platform::chip::InterruptService;
@@ -75,11 +72,11 @@ impl<I: InterruptService> Chip for Lpc55s69<'_, I> {
         }
     }
 
-    unsafe fn atomic<F, R>(&self, f: F) -> R
+    unsafe fn with_interrupts_disabled<F, R>(&self, f: F) -> R
     where
         F: FnOnce() -> R,
     {
-        cortexm33::support::atomic(f)
+        cortexm33::support::with_interrupts_disabled(f)
     }
 
     unsafe fn print_state(&self, writer: &mut dyn Write) {
@@ -107,7 +104,6 @@ impl<'a> Lpc55s69DefaultPeripheral<'a> {
 
 impl<'a> InterruptService for Lpc55s69DefaultPeripheral<'a> {
     unsafe fn service_interrupt(&self, interrupt: u32) -> bool {
-        // hprintln!("Interrupt: {}\n", interrupt);
         match interrupt {
             interrupts::GPIO_INT0_IRQ0 => {
                 self.pins.handle_interrupt();
@@ -174,13 +170,7 @@ impl<'a> InterruptService for Lpc55s69DefaultPeripheral<'a> {
                 true
             }
 
-            // interrupts::ADC => {
-            //     self.adc0.handle_interrupt();
-            //     // hprintln!("Interrupt7 active!");
-            //     // panic!("Interrupt7 active!");
 
-            //     true
-            // }
             _ => true,
         }
     }
