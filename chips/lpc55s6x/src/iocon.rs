@@ -1,7 +1,11 @@
+// Licensed under the Apache License, Version 2.0 or the MIT License.
+// SPDX-License-Identifier: Apache-2.0 OR MIT
+// Copyright Tock Contributors 2025.
+
 use crate::gpio::LPCPin;
 use kernel::utilities::registers::interfaces::Writeable;
 use kernel::utilities::registers::{
-    self, register_bitfields, register_structs, ReadOnly, ReadWrite, WriteOnly,
+    register_bitfields, register_structs, ReadWrite
 };
 use kernel::utilities::StaticRef;
 

@@ -1,3 +1,6 @@
+// Licensed under the Apache License, Version 2.0 or the MIT License.
+// SPDX-License-Identifier: Apache-2.0 OR MIT
+// Copyright Tock Contributors 2025.
 
 use kernel::hil::gpio;
 use kernel::utilities::cells::OptionalCell;
@@ -254,7 +257,7 @@ pub struct GpioPin<'a> {
     registers: StaticRef<GpioRegisters>,
     port: u8,
     pin: u8,
-    pint_channel: OptionalCell<u8>,
+    // pint_channel: OptionalCell<u8>,
     client: OptionalCell<&'a dyn gpio::Client>,
     inputmux: OptionalCell<&'a Inputmux>,
     iocon: OptionalCell<&'a Iocon>,
@@ -263,9 +266,9 @@ pub struct GpioPin<'a> {
 
 pub use kernel::hil::gpio::{Configure, Input, Interrupt, Output, Pin};
 
-use crate::inputmux::{self, Inputmux};
+use crate::inputmux::Inputmux;
 use crate::iocon::Iocon;
-use crate::pint::{self, Edge, Pint};
+use crate::pint::{Edge, Pint};
 
 impl<'a> GpioPin<'a> {
     pub const fn new(pin_name: LPCPin) -> Self {
@@ -489,7 +492,7 @@ impl gpio::Configure for GpioPin<'_> {
         self.make_input()
     }
     fn deactivate_to_low_power(&self) {
-        let state = gpio::FloatingState::PullNone;
+        let _state = gpio::FloatingState::PullNone;
         self.make_input();
     }
 }

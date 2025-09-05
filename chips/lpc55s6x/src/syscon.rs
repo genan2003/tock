@@ -1,14 +1,11 @@
+// Licensed under the Apache License, Version 2.0 or the MIT License.
+// SPDX-License-Identifier: Apache-2.0 OR MIT
+// Copyright Tock Contributors 2025.
+
 use kernel::utilities::registers::{
     self, register_bitfields, register_structs, ReadOnly, ReadWrite, WriteOnly,
 };
 use kernel::utilities::StaticRef;
-
-use core::cell::Cell;
-use kernel::deferred_call::{DeferredCall, DeferredCallClient};
-use kernel::hil;
-use kernel::utilities::cells::{OptionalCell, TakeCell};
-use kernel::utilities::registers::interfaces::{ReadWriteable, Readable, Writeable};
-use kernel::ErrorCode;
 
 register_structs! {
     /// SYSCON

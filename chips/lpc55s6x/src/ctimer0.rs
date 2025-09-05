@@ -1,15 +1,17 @@
+// Licensed under the Apache License, Version 2.0 or the MIT License.
+// SPDX-License-Identifier: Apache-2.0 OR MIT
+// Copyright Tock Contributors 2025.
+
 use cortexm33::support::with_interrupts_disabled;
 use kernel::hil;
 use kernel::hil::time::{Alarm, Ticks, Ticks32, Time};
 use kernel::utilities::cells::{OptionalCell, VolatileCell};
 use kernel::utilities::registers::interfaces::{ReadWriteable, Readable, Writeable};
 use kernel::utilities::registers::{
-    self, register_bitfields, register_structs, ReadOnly, ReadWrite, WriteOnly,
+     register_bitfields, register_structs, ReadOnly, ReadWrite
 };
 use kernel::utilities::StaticRef;
 
-use crate::chip::Lpc55s69;
-use crate::ctimer0::TCR::CRST;
 use crate::interrupts::CTIMER0;
 
 register_structs! {
@@ -397,6 +399,7 @@ impl<'a> LPCTimer<'a> {
         }
     }
 
+    #[allow(dead_code)]
     fn disable_timer_interrupt(&self) {
         unsafe {
             cortexm33::nvic::Nvic::new(CTIMER0).disable();

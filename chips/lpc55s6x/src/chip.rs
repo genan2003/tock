@@ -1,3 +1,7 @@
+// Licensed under the Apache License, Version 2.0 or the MIT License.
+// SPDX-License-Identifier: Apache-2.0 OR MIT
+// Copyright Tock Contributors 2025.
+
 use core::fmt::Write;
 use core::panic;
 
@@ -7,12 +11,8 @@ use kernel::platform::chip::InterruptService;
 
 // use crate::adc0;
 use crate::ctimer0::LPCTimer;
-use crate::gpio::GpioPin;
-use crate::gpio::LPCPin;
 use crate::gpio::Pins;
 use crate::interrupts;
-use crate::iocon::Iocon;
-use crate::pint::Pint;
 
 #[repr(u8)]
 pub enum Processor {
@@ -67,9 +67,7 @@ impl<I: InterruptService> Chip for Lpc55s69<'_, I> {
     }
 
     fn sleep(&self) {
-        unsafe {
             cortex_m::asm::wfi();
-        }
     }
 
     unsafe fn with_interrupts_disabled<F, R>(&self, f: F) -> R

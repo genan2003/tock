@@ -1,3 +1,7 @@
+// Licensed under the Apache License, Version 2.0 or the MIT License.
+// SPDX-License-Identifier: Apache-2.0 OR MIT
+// Copyright Tock Contributors 2025.
+
 pub const WDT_BOD_FLASH: u32 = 0;
 pub const SDMA0: u32 = 1;
 pub const GPIO_GLOBALINT0: u32 = 2;

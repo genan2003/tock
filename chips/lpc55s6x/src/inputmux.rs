@@ -1,9 +1,14 @@
+// Licensed under the Apache License, Version 2.0 or the MIT License.
+// SPDX-License-Identifier: Apache-2.0 OR MIT
+// Copyright Tock Contributors 2025.
+
 use kernel::utilities::registers::interfaces::ReadWriteable;
 use kernel::utilities::registers::{
-    self, register_bitfields, register_structs, ReadOnly, ReadWrite, WriteOnly,
+    register_bitfields, register_structs, ReadWrite, WriteOnly,
 };
 use kernel::utilities::StaticRef;
 
+#[allow(private_interfaces)]
 register_structs! {
     /// Input multiplexing (INPUT MUX)
     InputmuxRegisters {

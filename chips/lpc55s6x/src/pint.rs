@@ -1,20 +1,16 @@
-use crate::gpio::GpioPin;
+// Licensed under the Apache License, Version 2.0 or the MIT License.
+// SPDX-License-Identifier: Apache-2.0 OR MIT
+// Copyright Tock Contributors 2025.
+
 use crate::gpio::LPCPin;
-use crate::inputmux;
-use crate::inputmux::Inputmux;
-use core::cell::Cell;
-use core::ptr::write_volatile;
-use cortex_m::delay;
-use kernel::hil::gpio::Input;
-use kernel::hil::gpio::Output;
 use kernel::utilities::cells::OptionalCell;
-use kernel::utilities::cells::TakeCell;
 use kernel::utilities::registers::interfaces::{ReadWriteable, Readable, Writeable};
 use kernel::utilities::registers::{
-    self, register_bitfields, register_structs, ReadOnly, ReadWrite, WriteOnly,
+    register_bitfields, register_structs, ReadWrite, WriteOnly
 };
 use kernel::utilities::StaticRef;
 
+#[allow(private_interfaces)]
 register_structs! {
     PintRegisters {
         /// Pin Interrupt Mode register

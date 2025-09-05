@@ -1,5 +1,8 @@
-use crate::syscon::CTIMERCLKSEL0::SEL::CLEAR;
-use crate::syscon::{self, SysconRegisters, *};
+// Licensed under the Apache License, Version 2.0 or the MIT License.
+// SPDX-License-Identifier: Apache-2.0 OR MIT
+// Copyright Tock Contributors 2025.
+
+use crate::syscon::{self, SysconRegisters};
 use kernel::utilities::{
     registers::interfaces::{ReadWriteable, Writeable},
     StaticRef,
