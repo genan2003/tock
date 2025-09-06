@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0 OR MIT
 // Copyright Tock Contributors 2025.
 
-#[allow(clippy::elidable_lifetime_names)]
+#![allow(clippy::elidable_lifetime_names)]
 use core::fmt::Write;
 use core::panic;
 
