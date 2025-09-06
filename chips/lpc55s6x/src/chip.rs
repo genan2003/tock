@@ -68,7 +68,9 @@ impl<I: InterruptService> Chip for Lpc55s69<'_, I> {
     }
 
     fn sleep(&self) {
-        cortex_m::asm::wfi();
+        unsafe {
+            cortexm33::support::wfi();
+        }
     }
 
     unsafe fn with_interrupts_disabled<F, R>(&self, f: F) -> R

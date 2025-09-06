@@ -9,11 +9,6 @@ mod io;
 
 use capsules_core::virtualizers::virtual_alarm::VirtualMuxAlarm;
 use components::led::LedsComponent;
-use core::arch::asm;
-use core::panic;
-use core::ptr::write_volatile;
-use cortex_m::asm;
-use cortex_m::peripheral::NVIC;
 use cortexm33;
 use kernel::component::Component;
 use kernel::hil::led::{LedHigh, LedLow};
