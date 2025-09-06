@@ -36,12 +36,10 @@ pub static mut STACK_MEMORY: [u8; 0x4000] = [0; 0x4000];
 static mut PROCESS_PRINTER: Option<&'static capsules_system::process_printer::ProcessPrinterText> =
     None;
 
-
 fn system_init() {
     let clocks = Clock::new();
     clocks.start_gpio_clocks();
     clocks.start_timer_clocks();
-
 }
 
 unsafe fn get_peripherals() -> &'static mut Lpc55s69DefaultPeripheral<'static> {

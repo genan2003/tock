@@ -8,7 +8,7 @@ use kernel::utilities::registers::{register_bitfields, register_structs, ReadWri
 use kernel::utilities::StaticRef;
 
 register_structs! {
-    PintRegisters {
+    pub PintRegisters {
         /// Pin Interrupt Mode register
         (0x00 => isel: ReadWrite<u32, ISEL::Register>),
         /// Pin interrupt level or rising edge interrupt enable register
@@ -548,7 +548,6 @@ impl<'a> Pint<'a> {
 
     pub fn handle_interrupt(&self) {
         let status = self.registers.ist.get();
-
 
         self.registers.rise.write(RISE::RDET.val(status));
         self.registers.fall.write(FALL::FDET.val(status));

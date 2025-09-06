@@ -4213,10 +4213,7 @@ impl Iocon {
     pub fn configure_pin(&self, pin: LPCPin, config: Config) {
         let standard_value = PIO0_0::FUNC.val(config.function as u32)
             + PIO0_0::MODE.val(config.pull as u32)
-            // + PIO0_0::SLEW.val(config.slew as u32)
-            // + PIO0_0::INVERT.val(config.invert as u32)
             + PIO0_0::DIGIMODE.val(config.digital_mode as u32);
-        // + PIO0_0::OD.val(config.open_drain as u32);
 
         match pin {
             LPCPin::P0_0 => self.registers.pio0_0.set(standard_value.into()),

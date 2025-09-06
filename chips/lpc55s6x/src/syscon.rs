@@ -2,7 +2,9 @@
 // SPDX-License-Identifier: Apache-2.0 OR MIT
 // Copyright Tock Contributors 2025.
 
-use kernel::utilities::registers::{register_bitfields, register_structs, ReadOnly, ReadWrite, WriteOnly,};
+use kernel::utilities::registers::{
+    register_bitfields, register_structs, ReadOnly, ReadWrite, WriteOnly,
+};
 use kernel::utilities::StaticRef;
 
 register_structs! {

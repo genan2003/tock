@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0 OR MIT
 // Copyright Tock Contributors 2025.
 
+#[allow(clippy::elidable_lifetime_names)]
 use core::fmt::Write;
 use core::panic;
 
@@ -67,7 +68,7 @@ impl<I: InterruptService> Chip for Lpc55s69<'_, I> {
     }
 
     fn sleep(&self) {
-            cortex_m::asm::wfi();
+        cortex_m::asm::wfi();
     }
 
     unsafe fn with_interrupts_disabled<F, R>(&self, f: F) -> R
@@ -167,7 +168,6 @@ impl<'a> InterruptService for Lpc55s69DefaultPeripheral<'a> {
 
                 true
             }
-
 
             _ => true,
         }

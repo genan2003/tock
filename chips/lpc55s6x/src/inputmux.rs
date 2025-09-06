@@ -8,7 +8,7 @@ use kernel::utilities::StaticRef;
 
 register_structs! {
     /// Input multiplexing (INPUT MUX)
-    InputmuxRegisters {
+    pub InputmuxRegisters {
         /// Input mux register for SCT0 input
         (0x000 => sct0_inmux_0: ReadWrite<u32>),
         /// Input mux register for SCT0 input
