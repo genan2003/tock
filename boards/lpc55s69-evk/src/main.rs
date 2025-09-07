@@ -9,20 +9,16 @@ mod io;
 
 use capsules_core::virtualizers::virtual_alarm::VirtualMuxAlarm;
 use components::led::LedsComponent;
-use cortexm33;
 use kernel::component::Component;
-use kernel::hil::led::{LedHigh, LedLow};
-use kernel::hil::time::{Alarm, Time};
+use kernel::hil::led::LedLow;
 use kernel::platform::{KernelResources, SyscallDriverLookup};
 use kernel::process::ProcessArray;
 use kernel::scheduler::round_robin::RoundRobinSched;
 use kernel::{capabilities, create_capability, static_init};
 use lpc55s6x::chip::{Lpc55s69, Lpc55s69DefaultPeripheral};
 use lpc55s6x::clocks::Clock;
-use lpc55s6x::gpio::{Configure, GpioPin, Input, LPCPin, Output};
-use lpc55s6x::interrupts::GPIO_INT0_IRQ0;
-use lpc55s6x::iocon::{Config, Function, Iocon, Pull, Slew};
-use lpc55s6x::pint::{Edge, Pint};
+use lpc55s6x::gpio::{GpioPin, LPCPin};
+use lpc55s6x::pint::Edge;
 
 #[no_mangle]
 #[link_section = ".stack_buffer"]
@@ -113,7 +109,7 @@ impl KernelResources<Lpc55s69<'static, Lpc55s69DefaultPeripheral<'static>>> for 
 
 #[no_mangle]
 unsafe fn main() -> ! {
-    cortexm33::scb::set_vector_table_offset(0x00000000 as *const ());
+    cortexm33::scb::set_vector_table_offset(core::ptr::null::<()>());
 
     system_init();
 

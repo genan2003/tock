@@ -8,11 +8,10 @@ use core::panic::PanicInfo;
 use core::ptr::{addr_of, addr_of_mut};
 use cortex_m_semihosting::hprint;
 use kernel::debug::{self, IoWrite};
-use kernel::hil::gpio::*;
+use kernel::hil::gpio::Configure;
 use kernel::hil::led::LedHigh;
 use lpc55s6x::gpio::GpioPin;
 use lpc55s6x::iocon::{Config, Function, Iocon, Pull, Slew};
-use lpc55s6x::pint::{Edge, Pint};
 
 pub struct Writer;
 
