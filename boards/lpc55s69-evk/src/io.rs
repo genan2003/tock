@@ -6,7 +6,7 @@ use crate::{LPCPin, CHIP, PROCESSES, PROCESS_PRINTER};
 use core::fmt::Write;
 use core::panic::PanicInfo;
 use core::ptr::{addr_of, addr_of_mut};
-use cortex_m_semihosting::hprint;
+// use cortex_m_semihosting::hprint;
 use kernel::debug::{self, IoWrite};
 use kernel::hil::gpio::Configure;
 use kernel::hil::led::LedHigh;
@@ -20,8 +20,8 @@ pub static mut WRITER: Writer = Writer;
 
 impl Write for Writer {
     fn write_str(&mut self, s: &str) -> ::core::fmt::Result {
-        for byte in s.as_bytes() {
-            hprint!("{}", *byte as char);
+        for _byte in s.as_bytes() {
+            // hprint!("{}", *byte as char);
         }
         Ok(())
     }
@@ -29,8 +29,8 @@ impl Write for Writer {
 
 impl IoWrite for Writer {
     fn write(&mut self, buf: &[u8]) -> usize {
-        for byte in buf {
-            hprint!("{}", *byte as char);
+        for _byte in buf {
+            // hprint!("{}", *byte as char);
         }
         buf.len()
     }
