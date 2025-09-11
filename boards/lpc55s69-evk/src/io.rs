@@ -18,6 +18,8 @@ pub struct Writer;
 /// Global static for debug writer
 pub static mut WRITER: Writer = Writer;
 
+// TODO: This will be implemented later, when UART support will be available
+
 impl Write for Writer {
     fn write_str(&mut self, s: &str) -> ::core::fmt::Result {
         for _byte in s.as_bytes() {
@@ -51,8 +53,6 @@ pub unsafe fn panic_fmt(panic_info: &PanicInfo) -> ! {
     let red_led = GpioPin::new(LPCPin::P1_6);
     red_led.make_output();
     let led = &mut LedHigh::new(&red_led);
-    // red_led.set();
-    // red_led.clear();
     let writer = &mut *addr_of_mut!(WRITER);
 
     debug::panic(
