@@ -23,7 +23,7 @@ pub static mut WRITER: Writer = Writer;
 impl Write for Writer {
     fn write_str(&mut self, s: &str) -> ::core::fmt::Result {
         for _byte in s.as_bytes() {
-            // hprint!("{}", *byte as char);
+            // TODO print one character when UART becomes available
         }
         Ok(())
     }
