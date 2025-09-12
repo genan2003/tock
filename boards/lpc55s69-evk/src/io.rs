@@ -32,7 +32,7 @@ impl Write for Writer {
 impl IoWrite for Writer {
     fn write(&mut self, buf: &[u8]) -> usize {
         for _byte in buf {
-            // hprint!("{}", *byte as char);
+            // TODO print one character when UART becomes available
         }
         buf.len()
     }
