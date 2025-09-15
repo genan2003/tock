@@ -10,7 +10,6 @@ use cortexm33::{CortexM33, CortexMVariant};
 use kernel::platform::chip::Chip;
 use kernel::platform::chip::InterruptService;
 
-
 use crate::ctimer0::LPCTimer;
 use crate::gpio::Pins;
 use crate::interrupts;
